@@ -1,65 +1,67 @@
-# Final Project
+Final Project Multi-Container Website with Docker and Nginx Proxy
+📌 Description
 
-## 📌 Описание
+This project is a website deployed in a Docker container using Nginx. It demonstrates skills in working with Docker, configuring permissions, CI/CD, and the interaction of multiple containers via docker-compose.
 
-Этот проект представляет собой веб-сайт, развернутый в Docker-контейнере с использованием Nginx. Он демонстрирует навыки работы с Docker, настройку прав, CI/CD и взаимодействие нескольких контейнеров через `docker-compose`.
+✅ Fulfillment of Requirements
 
----
+    Project Build in Docker:
 
-## ✅ Выполнение требований 
+        A Dockerfile based on nginx:alpine is used.
 
-1. **Сборка проекта в Docker:**
-   - Используется `Dockerfile` на базе `nginx:alpine`.
-   - Веб-сайт копируется в контейнер и доступен по порту **8080**.
+        The website is copied into the container and is accessible on port 8080.
 
-2. **Права доступа:**
-   - В Dockerfile настроены команды `chmod` и `chown` для безопасного доступа к файлам сайта.
+    Permissions:
 
-3. **CI/CD:**
-   - Файл `.github/workflows/ci.yml` выполняет автоматическую сборку и проверку при каждом `push` в ветку `main`.
+        The Dockerfile is configured with chmod and chown commands to ensure secure access to the website files.
 
-4. **Несколько контейнеров с взаимодействием:**
-   - `docker-compose.yml` содержит два сервиса:
-     - `web` — основной сайт;
-     - `whoami` — сервис на основе образа `traefik/whoami`, отображающий информацию о запросе (IP, заголовки и т.п.).
+    CI/CD:
 
-5. **Дополнительная тема:**
-   - В проект добавлен **HEALTHCHECK**, позволяющий Docker автоматически отслеживать состояние контейнеров.
-   - После запуска `docker ps` можно увидеть статус `healthy` или `unhealthy` для `web` и `whoami`, что полезно для мониторинга и отладки.
+        The .github/workflows/ci.yml file performs an automatic build and check on every push to the main branch.
 
----
+    Multiple Containers with Interaction:
 
-## 🚀 Как запустить
+        The docker-compose.yml contains two services:
 
-1. Клонируйте репозиторий:
+            web — the main website;
 
-```bash
+            whoami — a service based on the traefik/whoami image, displaying information about the request (IP, headers, etc.).
+
+    Additional Topic:
+
+        A HEALTHCHECK is added to the project, allowing Docker to automatically monitor the containers' health.
+
+        After running docker ps, you can see the status as healthy or unhealthy for both the web and whoami containers, which is useful for monitoring and troubleshooting.
+
+🚀 How to Run
+
+    Clone the repository:
+
 git clone (https://github.com/sherkhan008/DevOps)
 cd Project
 
-2. Запустите Docker Compose:
+    Run Docker Compose:
 
 docker-compose up -d
 
-3. Перейдите по адресу:
+    Visit the following addresses:
 
-    http://localhost:8080 — основной сайт
+    http://localhost:8080 — the main website
 
-    http://localhost:8081 — контейнер whoami
+    http://localhost:8081 — the whoami container
 
-
-📁 Структура проекта
+📁 Project Structure
 
 Project/
 ├── Dockerfile
 ├── docker-compose.yml
 ├── website/
-│   └── index.html
-│   └── favicon.svg
-│   └── readme-images
-│   └── assets
+│ └── index.html
+│ └── favicon.svg
+│ └── readme-images
+│ └── assets
 ├── nginx/
-│   └── default.conf
+│ └── default.conf
 ├── .github/
-│   └── workflows/
-│       └── ci.yml
+│ └── workflows/
+│ └── ci.yml
